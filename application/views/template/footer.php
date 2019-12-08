@@ -36,6 +36,50 @@
   <!-- Template Main JS File -->
   <script src="<?php echo base_url() ?>assets/js/main.js"></script>
 
+  <!-- Custom JS -->
+  <script type="text/javascript" >
+    $(document).ready(function() {
+      
+  //   ========================  Start ADD RECORD ====================================
+        $('#formTambahMember').submit(function(e){
+          e.preventDefault();
+        e.stopPropagation(); 
+        var namaWo      = $('#dmNamaWo').val();
+        var nama        = $('#dmNama').val();
+        var email       = $('#dmEmail').val();
+        var password    = $('#dmPassword').val();
+
+        console.log("tambah kategori");        
+
+        // alert(namaWo+" +"+nama +" + "+email+" + "+password);
+    //      return;
+        // $.ajax({
+        //     type : "POST",
+        //     url  : "<?php echo site_url(); ?>/CAdmin/createMember",
+        //     dataType : "JSON",
+        //     data : {namaWo,
+        //             nama,
+        //             email,
+        //             password}, 
+            
+        //     success:function(data){
+            
+        //     alert("Berhasil Ditambah");
+        //     location.reload();
+        //     }
+            
+        });
+
+        return false;
+        });
+    //   ========================  END ADD RECORD ====================================
+ 
+    )}
+  </script>
+
+
+
+
 </body>
 
 </html>

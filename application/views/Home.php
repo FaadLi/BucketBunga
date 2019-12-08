@@ -19,72 +19,45 @@
           <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
             <h2>Hey, I'm Johan Stanworth</h2>
             <p class="mb-0">Freelance Creative &amp; Professional Graphics Designer</p>
+            
+            <a href="#"data-toggle="modal" data-target="#Modal_Add"><h2>Tambah Bucket</h2></a>
           </div>
           <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
             <div id="filters" class="filters">
+
+            
               <a href="#" data-filter="*" class="active">All</a>
-              <a href="#" data-filter=".web">Web</a>
-              <a href="#" data-filter=".design">Design</a>
-              <a href="#" data-filter=".branding">Branding</a>
-              <a href="#" data-filter=".photography">Photography</a>
+              <?php
+                // looping data dari controller
+                foreach ($kategori as $kat) :
+              ?>
+              <a href="#" data-filter=".<?php echo ($kat->id_kat) ?>"><?php echo ($kat->nama_kategori) ?></a>
+              <?php endforeach; ?>
+
             </div>
-          </div>
+            
+          </div>  
         </div>
+
+        
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
-          <div class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
+          <?php
+            // looping data dari controller
+            foreach ($bucketnya as $key) :
+          ?>
+          <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 <?php echo ($key->id_kat) ?>">
+            <a href="<?php echo base_url() ?>index.php/CHome/detail" class="item-wrap fancybox">
               <div class="work-info">
-                <h3>Boxed Water</h3>
-                <span>Web</span>
+                <h3><?php echo ($key->namaBunga) ?></h3>
+                <!-- <h3>Boxed Water</h3> -->
+                <span><?php echo ($key->nama_kategori) ?></span>
+                <!-- <span>Web</span> -->
               </div>
               <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg">
             </a>
           </div>
-          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <div class="work-info">
-                <h3>Build Indoo</h3>
-                <span>Photography</span>
-              </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_2.jpg">
-            </a>
-          </div>
-          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <div class="work-info">
-                <h3>Cocooil</h3>
-                <span>Branding</span>
-              </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_3.jpg">
-            </a>
-          </div>
-          <div class="item design col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <div class="work-info">
-                <h3>Nike Shoe</h3>
-                <span>Design</span>
-              </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_4.jpg">
-            </a>
-          </div>
-          <div class="item photography col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <div class="work-info">
-                <h3>Kitchen Sink</h3>
-                <span>Photography</span>
-              </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_5.jpg">
-            </a>
-          </div>
-          <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="work-single.html" class="item-wrap fancybox">
-              <div class="work-info">
-                <h3>Amazon</h3>
-                <span>brandingn</span>
-              </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_6.jpg">
-            </a>
-          </div>
+          <?php endforeach; ?>
+
         </div>
       </div>
     </div>
@@ -156,5 +129,73 @@
       </div>
     </div>
   </main>
+
+
+
+  <!--MODAL Baru-->
+    
+<form id="formTambahBucket">
+    
+    <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Tambah Bucket Baru</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>			           
+          </div>
+          <div class="modal-body ">			              
+             
+                <div class="form-group col-lg-12">
+                    <label>Nama Bucket Bunga</label>
+                    <input type="text" id="dmNama" class="form-control" minlength="5" placeholder="Nama Bucket Bunga"required="" >
+                    <div class="invalid-feedback">Isi dulu</div>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label>Keterangan</label>
+                    <textarea type="textarea" id="dmNamaWo" class="form-control" minlength="5" placeholder="Keterangan"required="" ></textarea>
+                    <div class="invalid-feedback">Isi dulu</div>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label>Url</label>
+                    <input type="text" id="dmNamaWo" class="form-control" minlength="5" placeholder="Masukkan URL"required="" >
+                    <div class="invalid-feedback">Isi dulu</div>
+                </div>
+
+                <div class="form-group col-lg-12 " >
+                    <label>Kategori</label> <br>
+                    <select class="js-select2 form-control-file" name="type">
+                        <option selected="selected">Pilih Kategori</option>
+                        <?php foreach ($kategori as $kat) :?>
+                        
+                        <option value="<?php echo ($kat->id_kat) ?>"><?php echo ($kat->nama_kategori) ?></option>
+                        
+                        <?php endforeach; ?>
+                    
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label>Gambar</label>
+                    <input type="file" class="form-control-file border" name="file" data-toggle="tooltip" title="Fungsi Belum Bisa">
+                    <div class="invalid-feedback">Isi dulu</div>
+                </div>
+
+                
+
+                
+                
+              
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal">Batal</button>
+              <button type="submit" id="btn_push" class="btn btn-primary col-md-3">Tambah</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+<!--END MODAL baru-->
 
 

@@ -8,20 +8,27 @@ class CHome extends CI_Controller {
 		parent::__construct();
 
 		// Load semua model yang dipakai
+		$this->load->model('home_model');
 	}
 
 	public function index()
 	{
+		// Dapatkan data bucket
+		$data['bucketnya'] 	= $this->home_model->get_bunganya();
+		$data['kategori'] 	= $this->home_model->get_kategori();
+
 		$this->load->view('template/header');
-		$this->load->view('Home');
+		$this->load->view('Home', $data);
 		$this->load->view('template/footer');
 		
 	}
 
 	public function detail()
 	{
+		$data['bucketnya'] 	= $this->home_model->get_bunganya();
+
 		$this->load->view('template/header');
-		$this->load->view('Detail');
+		$this->load->view('Detail', $data);
 		$this->load->view('template/footer');
 	}
 

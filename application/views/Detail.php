@@ -74,60 +74,19 @@
           </div>
 
           <div class="row" data-aos="fade-up" data-aos-delay="200">
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 web">
+            
+          <?php foreach ($bucketnya as $key) :?>
+            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4  <?php echo ($key->id_kat) ?>">
               <a href="work-single.html" class="item-wrap fancybox">
                 <div class="work-info">
-                  <h3>Boxed Water</h3>
-                  <span>Web</span>
+                  <h3><?php echo ($key->namaBunga) ?></h3>
+                  <span><?php echo ($key->nama_kategori) ?></span>
                 </div>
                 <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg">
               </a>
             </div>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 photography">
-              <a href="work-single.html" class="item-wrap fancybox">
-                <div class="work-info">
-                  <h3>Build Indoo</h3>
-                  <span>Photography</span>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_2.jpg">
-              </a>
-            </div>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 branding">
-              <a href="work-single.html" class="item-wrap fancybox">
-                <div class="work-info">
-                  <h3>Cocooil</h3>
-                  <span>Branding</span>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_3.jpg">
-              </a>
-            </div>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 design">
-              <a href="work-single.html" class="item-wrap fancybox">
-                <div class="work-info">
-                  <h3>Nike Shoe</h3>
-                  <span>Design</span>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_4.jpg">
-              </a>
-            </div>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 photography">
-              <a href="work-single.html" class="item-wrap fancybox">
-                <div class="work-info">
-                  <h3>Kitchen Sink</h3>
-                  <span>Photography</span>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_5.jpg">
-              </a>
-            </div>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 branding">
-              <a href="work-single.html" class="item-wrap fancybox">
-                <div class="work-info">
-                  <h3>Amazon</h3>
-                  <span>brandingn</span>
-                </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_6.jpg">
-              </a>
-            </div>
+          <?php endforeach; ?>
+
           </div>
 
         </div>
