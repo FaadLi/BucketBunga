@@ -8,25 +8,35 @@ class CHome extends CI_Controller {
 		parent::__construct();
 
 		// Load semua model yang dipakai
-		$this->load->model('kategori_model');
 	}
 
 	public function index()
 	{
+		$this->load->view('template/header');
 		$this->load->view('Home');
-		// $this->load->view('Kategori');
+		$this->load->view('template/footer');
+		
 	}
-	public function kategori($tabel) 
+
+	public function detail()
 	{
-
-		// Dapatkan kategori
-		// $tabel = "pakaian";
-		$tabel = $tabel;
-
-		$data['categories'] = $this->kategori_model->get_kategori($tabel);
-
-
-		$this->load->view('Kategori', $data);
-
+		$this->load->view('template/header');
+		$this->load->view('Detail');
+		$this->load->view('template/footer');
 	}
+
+	public function about()
+	{
+		$this->load->view('template/header');
+		$this->load->view('About');
+		$this->load->view('template/footer');
+	}
+
+	public function contact()
+	{
+		$this->load->view('template/header');
+		$this->load->view('Contact');
+		$this->load->view('template/footer');
+	}
+
 }
