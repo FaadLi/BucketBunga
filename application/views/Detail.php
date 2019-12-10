@@ -1,8 +1,8 @@
 
-
+<div id="detail" style="display:none">
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MyPortfolio.</a>
+      <a class="navbar-brand" href="index.php/CHome">Bucket Bunga.</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
@@ -10,9 +10,6 @@
 
     </div>
   </nav>
-
-
-
   <main id="main">
 
     <div class="site-section">
@@ -25,8 +22,6 @@
               explicabo inventore.</p>
 
           </div>
-
-
         </div>
       </div>
 
@@ -38,25 +33,26 @@
             </div>
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
-                <h3 class="h3">Boxed Water</h3>
-                <p class="mb-4"><span class="text-muted">Design</span></p>
+                <h3 class="h3" id="namaBunga"></h3>
+                
+                <p class="mb-4"><span class="text-muted"id="nama_kategori" ></span></p>
 
                 <div class="mb-5">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores illo, id recusandae molestias
-                    illum unde pariatur, enim tempora.</p>
+                  <p id="keterangan"></p>
 
                 </div>
 
 
-                <h4 class="h4 mb-3">What I did</h4>
+                <!-- <h4 class="h4 mb-3">What I did</h4>
                 <ul class="list-unstyled list-line mb-5">
                   <li>Design</li>
                   <li>HTML5/CSS3</li>
                   <li>CMS</li>
                   <li>Logo</li>
-                </ul>
+                </ul> -->
 
-                <p><a href="#" class="readmore">Visit Website</a></p>
+                <p><a href="#" id="pesanBunga" class="readmore">Pesan</a></p>
+                <p><a href="#" id="deleteBunga" class="readmore">Delete</a></p>
               </div>
             </div>
           </div>
@@ -126,4 +122,26 @@
         </div>
       </div>
   </main>
-  
+
+  </div>
+
+  <!--MODAL DELETE-->
+<form>
+    <div class="modal fade" id="Modal_Delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Hapus Bucket Bunga ini ?</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>			           
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" id="id_bunga" class="form-control">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button type="button" type="submit" id="btn_delete" class="btn btn-danger">Yes</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</form>
+<!--END MODAL DELETE-->
+

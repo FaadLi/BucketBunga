@@ -1,5 +1,5 @@
 
-
+<div id="home" style="display:block">
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
       <a class="navbar-brand" href="index.php/CHome">Bucket Bunga.</a>
@@ -41,12 +41,23 @@
 
         
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+          
+          <div id="getget">
           <?php
             // looping data dari controller
             foreach ($bucketnya as $key) :
+           
           ?>
-          <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 <?php echo ($key->id_kat) ?>">
-            <a href="<?php echo base_url() ?>index.php/CHome/detail" class="item-wrap fancybox">
+          <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 <?php echo ($key->id_kat) ?>" 
+          data-id="<?php echo ($key->id) ?>" 
+          data-nama="<?php echo ($key->namaBunga) ?>" 
+          data-kategori="<?php echo ($key->nama_kategori) ?>" 
+          data-keterangan="<?php echo ($key->keterangan) ?>" 
+          data-url="<?php echo ($key->url) ?>" 
+          data-upload="<?php echo ($key->tgl_upload) ?>" >
+
+            <a href="#" class="item-wrap fancybox item_edit"<?php  ?>  >
+            <!-- <a href="<?php echo base_url() ?>index.php/CHome/detail" class="item-wrap fancybox"> -->
               <div class="work-info">
                 <h3><?php echo ($key->namaBunga) ?></h3>
                 <!-- <h3>Boxed Water</h3> -->
@@ -56,7 +67,9 @@
               <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg">
             </a>
           </div>
+          
           <?php endforeach; ?>
+          </div>
 
         </div>
       </div>
@@ -129,6 +142,7 @@
       </div>
     </div>
   </main>
+  </div>
 
 
 
@@ -145,57 +159,53 @@
           </div>
           <div class="modal-body ">			              
              
-                <div class="form-group col-lg-12">
-                    <label>Nama Bucket Bunga</label>
-                    <input type="text" id="dmNama" class="form-control" minlength="5" placeholder="Nama Bucket Bunga"required="" >
-                    <div class="invalid-feedback">Isi dulu</div>
-                </div>
+            <div class="form-group col-lg-12">
+                <label>Nama Bucket Bunga</label>
+                <input type="text" id="idnama" class="form-control" minlength="5" placeholder="Nama Bucket Bunga"required="" >
+                <div class="invalid-feedback">Isi dulu</div>
+            </div>
 
-                <div class="form-group col-lg-12">
-                    <label>Keterangan</label>
-                    <textarea type="textarea" id="dmNamaWo" class="form-control" minlength="5" placeholder="Keterangan"required="" ></textarea>
-                    <div class="invalid-feedback">Isi dulu</div>
-                </div>
+            <div class="form-group col-lg-12">
+                <label>Keterangan</label>
+                <textarea type="textarea" id="idketerangan" class="form-control" minlength="5" placeholder="Keterangan"required="" ></textarea>
+                <div class="invalid-feedback">Isi dulu</div>
+            </div>
 
-                <div class="form-group col-lg-12">
-                    <label>Url</label>
-                    <input type="text" id="dmNamaWo" class="form-control" minlength="5" placeholder="Masukkan URL"required="" >
-                    <div class="invalid-feedback">Isi dulu</div>
-                </div>
+            <div class="form-group col-lg-12">
+                <label>Url</label>
+                <input type="url" id="idurl" class="form-control" minlength="5" placeholder="Masukkan URL"data-toggle="tooltip" title="masukkan https://...">
+                <div class="invalid-feedback">Isi dulu</div>
+            </div>
 
-                <div class="form-group col-lg-12 " >
-                    <label>Kategori</label> <br>
-                    <select class="js-select2 form-control-file" name="type">
-                        <option selected="selected">Pilih Kategori</option>
-                        <?php foreach ($kategori as $kat) :?>
-                        
-                        <option value="<?php echo ($kat->id_kat) ?>"><?php echo ($kat->nama_kategori) ?></option>
-                        
-                        <?php endforeach; ?>
+            <div class="form-group col-lg-12 " >
+                <label>Kategori</label> <br>
+                <select class="js-select2 form-control-file" id="idkategori" required="">
+                    <option disabled selected >Pilih Kategori</option>
+                    <?php foreach ($kategori as $kat) :?>
                     
-                    </select>
-                </div>
-
-                <div class="form-group col-lg-12">
-                    <label>Gambar</label>
-                    <input type="file" class="form-control-file border" name="file" data-toggle="tooltip" title="Fungsi Belum Bisa">
-                    <div class="invalid-feedback">Isi dulu</div>
-                </div>
-
+                    <option value="<?php echo ($kat->id_kat) ?>"><?php echo ($kat->nama_kategori) ?></option>
+                    
+                    <?php endforeach; ?>
                 
+                </select>
+            </div>
 
-                
-                
+            <div class="form-group col-lg-12">
+                <label>Gambar</label>
+                <input type="file" class="form-control-file border" name="file" data-toggle="tooltip" title="Fungsi Belum Bisa">
+                <div class="invalid-feedback">Isi dulu</div>
+            </div>
               
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal">Batal</button>
-              <button type="submit" id="btn_push" class="btn btn-primary col-md-3">Tambah</button>
+              <button type="submit" class="btn btn-primary col-md-3">Tambah</button>
           </div>
         </div>
       </div>
     </div>
   </form>
 <!--END MODAL baru-->
+
 
 

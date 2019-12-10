@@ -8,6 +8,15 @@ class Home_model extends CI_Model {
     	parent::__construct();
     }
 
+    public function get_kategori()
+    {
+        // Urutkan berdasar abjad
+        $this->db->order_by('id_kat');
+
+        $query = $this->db->get('kategori');
+        return $query->result();
+    }
+
     public function get_bunganya()
     {
         // Urutkan berdasar abjad
@@ -22,18 +31,28 @@ class Home_model extends CI_Model {
 
         $query = $this->db->get('bucketBunga');
         return $query->result();
-
-
-
     }
 
-    public function get_kategori()
-    {
-        // Urutkan berdasar abjad
-        $this->db->order_by('id_kat');
+    
 
-        $query = $this->db->get('kategori');
-        return $query->result();
+    public function set_bunganya($namaBunga,$keterangan, $id_kat, $url)
+    {
+        $data = array(
+            'namaBunga'     => $namaBunga,
+            'keterangan'    => $keterangan,
+            'id_kat'        => $id_kat,
+            'url'           => $url
+        );
+        // menambahkan data
+        return $this->db->insert('bucketBunga', $data);
+    }
+
+    public function delete_bunganya($id)
+    {
+        // menghapus Data
+        $this->db->where('id', $id);
+        $result = $this->db->delete('bucketBunga');
+        return $result;
     }
 
    
