@@ -2,7 +2,7 @@
 <div id="home" style="display:block">
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.php/CHome">Bucket Bunga.</a>
+      <a class="navbar-brand" href="<?php echo base_url() ?>index.php/CHome">Bucket Bunga.</a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
@@ -16,13 +16,13 @@
     <div class="site-section site-portfolio">
       <div class="container">
         <div class="row mb-5 align-items-center">
-          <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2>Hey, I'm Johan Stanworth</h2>
+          <div class="col-md-12 col-lg-7 mb-5 mb-lg-0" data-aos="fade-up">
+            <h2>Selamat Datang di Bucket Bunga Kertas</h2>
             <p class="mb-0">Freelance Creative &amp; Professional Graphics Designer</p>
             
             <a href="#"data-toggle="modal" data-target="#Modal_Add"><h2>Tambah Bucket</h2></a>
           </div>
-          <div class="col-md-12 col-lg-6 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-12 col-lg-5 text-left text-lg-right" data-aos="fade-up" data-aos-delay="100">
             <div id="filters" class="filters">
 
             
@@ -48,12 +48,13 @@
             foreach ($bucketnya as $key) :
            
           ?>
-          <div class="item col-sm-6 col-md-4 col-lg-4 mb-4 <?php echo ($key->id_kat) ?>" 
+          <div class="item get col-sm-6 col-md-4 col-lg-4 mb-4 <?php echo ($key->id_kat) ?>" 
           data-id="<?php echo ($key->id) ?>" 
           data-nama="<?php echo ($key->namaBunga) ?>" 
           data-kategori="<?php echo ($key->nama_kategori) ?>" 
           data-keterangan="<?php echo ($key->keterangan) ?>" 
-          data-url="<?php echo ($key->url) ?>" 
+          data-url="<?php echo ($key->url) ?>"
+          data-gambar="<?php echo ($key->gambar) ?>" 
           data-upload="<?php echo ($key->tgl_upload) ?>" >
 
             <a href="#" class="item-wrap fancybox item_edit"<?php  ?>  >
@@ -64,7 +65,8 @@
                 <span><?php echo ($key->nama_kategori) ?></span>
                 <!-- <span>Web</span> -->
               </div>
-              <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg">
+              <img class="img-fluid" src="<?php echo base_url(); echo ($key->gambar) ?>">
+              <!-- <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg"> -->
             </a>
           </div>
           
@@ -148,8 +150,8 @@
 
   <!--MODAL Baru-->
     
-<form id="formTambahBucket">
-    
+<!-- <form id="formTambahBucket"> -->
+  <?php echo form_open_multipart('',array('id'=>'formTambahBucket')) ?>
     <div class="modal fade" id="Modal_Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -192,10 +194,10 @@
 
             <div class="form-group col-lg-12">
                 <label>Gambar</label>
-                <input type="file" class="form-control-file border" name="file" data-toggle="tooltip" title="Fungsi Belum Bisa">
+                <input type="file" class="form-control-file border" name="filed" id="filed" data-toggle="tooltip" required="">
                 <div class="invalid-feedback">Isi dulu</div>
             </div>
-              
+               
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary col-md-3" data-dismiss="modal">Batal</button>

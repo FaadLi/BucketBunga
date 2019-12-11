@@ -2,7 +2,7 @@
 <div id="detail" style="display:none">
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.php/CHome">Bucket Bunga.</a>
+      <a class="navbar-brand" href="<?php echo base_url() ?>index.php/CHome"></a>
 
       <a href="#" class="burger" data-toggle="collapse" data-target="#main-navbar">
         <span></span>
@@ -29,11 +29,11 @@
         <div class="container">
           <div class="row align-items-stretch">
             <div class="col-md-8" data-aos="fade-up">
-              <img src="<?php echo base_url() ?>assets/img/img_1_big.jpg" alt="Image" class="img-fluid">
+              <img src="<?php echo base_url() ?>assets/img/img_1_big.jpg" id="gambar" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
-                <h3 class="h3" id="namaBunga"></h3>
+                <h3 class="" id="namaBunga"></h3>
                 
                 <p class="mb-4"><span class="text-muted"id="nama_kategori" ></span></p>
 
@@ -51,8 +51,8 @@
                   <li>Logo</li>
                 </ul> -->
 
-                <p><a href="#" id="pesanBunga" class="readmore">Pesan</a></p>
-                <p><a href="#" id="deleteBunga" class="readmore">Delete</a></p>
+                <p><a href="#" target="_blank" id="pesanBunga" class="readmore">Pesan</a></p>
+                <p><a href="#"  id="deleteBunga" class="readmore">Delete</a></p>
               </div>
             </div>
           </div>
@@ -69,20 +69,29 @@
             </div>
           </div>
 
-          <div class="row" data-aos="fade-up" data-aos-delay="200">
+          <div class="row" id="getget2" data-aos="fade-up" data-aos-delay="200">
             
           <?php foreach ($bucketnya as $key) :?>
-            <div class="item col-sm-6 col-md-4 col-lg-4 mb-4  <?php echo ($key->id_kat) ?>">
-              <a href="work-single.html" class="item-wrap fancybox">
+            <div class="item get2 col-sm-6 col-md-4 col-lg-4 mb-4  <?php echo ($key->id_kat) ?>"
+            data-id2="<?php echo ($key->id) ?>" 
+            data-nama2="<?php echo ($key->namaBunga) ?>" 
+            data-kategori2="<?php echo ($key->nama_kategori) ?>" 
+            data-keterangan2="<?php echo ($key->keterangan) ?>" 
+            data-gambar2="<?php echo ($key->gambar) ?>"
+            data-url2="<?php echo ($key->url) ?>" 
+            data-upload2="<?php echo ($key->tgl_upload) ?>" >
+
+
+              <a href="#" class="item-wrap fancybox">
                 <div class="work-info">
                   <h3><?php echo ($key->namaBunga) ?></h3>
                   <span><?php echo ($key->nama_kategori) ?></span>
                 </div>
-                <img class="img-fluid" src="<?php echo base_url() ?>assets/img/img_1.jpg">
+                <img class="img-fluid" src="<?php echo base_url(); echo ($key->gambar) ?>">
               </a>
             </div>
           <?php endforeach; ?>
-
+          
           </div>
 
         </div>

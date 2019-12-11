@@ -35,13 +35,15 @@ class Home_model extends CI_Model {
 
     
 
-    public function set_bunganya($namaBunga,$keterangan, $id_kat, $url)
+    public function set_bunganya($namaBunga,$keterangan, $id_kat, $url, $gambar)
     {
         $data = array(
             'namaBunga'     => $namaBunga,
             'keterangan'    => $keterangan,
             'id_kat'        => $id_kat,
-            'url'           => $url
+            'url'           => $url,
+            'gambar'        => $gambar
+            
         );
         // menambahkan data
         return $this->db->insert('bucketBunga', $data);

@@ -50,18 +50,45 @@
 
     $(document).ready(function(){
       console.log("coba JS");
+
+      // ========== Start ==========
       
       // Melempar data dan Pindah Page
-      $('#getget').on('click','.item',function(){
+      $('#getget2').on('click','.get2',function(){
+        var id              = $(this).data('id2');
+        var namaBunga       = $(this).data('nama2');
+        var nama_kategori   = $(this).data('kategori2');
+        var keterangan      = $(this).data('keterangan2');
+        var url             = $(this).data('url2');
+        var tgl_upload      = $(this).data('upload2');
+        var gambar          = $(this).data('gambar2');
+        
+        // console.log("masuk pak eko :"+namaBunga);
+
+        console.log(namaBunga+" + "+nama_kategori+" + "+keterangan+" + "+url+" + "+tgl_upload );
+
+        document.getElementById("namaBunga").innerHTML = namaBunga;
+        document.getElementById("keterangan").innerHTML = keterangan;
+        document.getElementById("nama_kategori").innerHTML = nama_kategori;
+        document.getElementById("deleteBunga").value = id;
+        document.getElementById("pesanBunga").value = namaBunga;
+        document.getElementById("gambar").src = "http://localhost/BucketBunga/"+gambar;
+
+        return;
+      });
+
+      // Melempar data dan Pindah Page
+      $('#getget').on('click','.get',function(){
         var id              = $(this).data('id');
         var namaBunga       = $(this).data('nama');
         var nama_kategori   = $(this).data('kategori');
         var keterangan      = $(this).data('keterangan');
         var url             = $(this).data('url');
         var tgl_upload      = $(this).data('upload');
+        var gambar          = $(this).data('gambar');
         
         // console.log("masuk pak eko :"+namaBunga);
-
+        console.log(gambar);
         // console.log(namaBunga+" + "+nama_kategori+" + "+keterangan+" + "+url+" + "+tgl_upload );
 
         document.getElementById("namaBunga").innerHTML = namaBunga;
@@ -69,16 +96,19 @@
         document.getElementById("nama_kategori").innerHTML = nama_kategori;
         document.getElementById("deleteBunga").value = id;
         document.getElementById("pesanBunga").value = namaBunga;
+        document.getElementById("gambar").src = "http://localhost/BucketBunga/"+gambar;
 
         return;
       });
+
+      // ========== END ==========
 
       // Pesan Data dan dilempar ke Whatsapp
       $('#pesanBunga').click(function(){
 
         var str = document.getElementById("pesanBunga").value;
          
-        var temp = "https://wa.me/6285954654678?text=Assalamualaikum%20.%0A%20%20Saya%20mau%20pesan%20Bucket%20Bunga%20%2A"+str+"%2A%20.";
+        var temp = "https://wa.me/6285954654678?text=%20.%0A%20%20Saya%20mau%20pesan%20Bucket%20Bunga%20%2A"+str+"%2A%20.";
         var res = temp.replace(/ /gi, "%20");
 
         // console.log(""+res);
@@ -135,32 +165,47 @@
         $('#formTambahBucket').submit(function(e){
           e.preventDefault();
         // e.stopPropagation(); 
-        var namaBunga   = $('#idnama').val();
-        var keterangan  = $('#idketerangan').val();
-        var url         = $('#idurl').val();
-        var id_kat      = $('#idkategori').val();
+          let namaBunga   = $('#idnama').val();
+          let keterangan  = $('#idketerangan').val();
+          let url         = $('#idurl').val();
+          let id_kat      = $('#idkategori').val();
+          
+          let files       = $('#filed')[0].files[0];
+          if(files == null){
+            alert("foto Kosong");
+            return;
+          }
+          let form = new FormData();
+          form.append('namaBunga'   ,namaBunga);
+          form.append('keterangan'  ,keterangan);
+          form.append('url'         ,url);
+          form.append('id_kat'      ,id_kat);
+          form.append('file'        ,files);
 
-        console.log("tambah kategori");        
+          console.log("tambah kategori"); 
+          console.log(files); 
+          console.log(form);
+
 
         //alert(namaBunga+" +"+keterangan +" + "+url+" + "+id_kat);
     
-        $.ajax({
+          $.ajax({
+            
             type : "POST",
             url  : "<?php echo site_url(); ?>/CHome/createBucket",
             dataType : "JSON",
-            data : {namaBunga,
-                    keterangan,
-                    url,
-                    id_kat}, 
+            data : form,
+            contentType: false,
+            processData: false, 
             
             success:function(data){
             
             alert("Berhasil Ditambah");
             location.reload();
-            }
+          }
             
         });
-
+        console.log("break");
         return false;
       });
     //   ========================  END ADD RECORD ====================================
